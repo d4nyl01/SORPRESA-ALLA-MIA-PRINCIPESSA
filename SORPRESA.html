@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>per la mia principessa auri❤️</title>
+    <style>
+        /* Importo due font: Quicksand per il testo normale e Dancing Script per l'apertura */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* --- STILI PER IL TESTO DELLA PRIMA PAGINA --- */
+        .title-amore {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff4b2b;
+            margin-bottom: 5px;
+        }
+
+        .intro-text {
+            color: #333;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .intro-subtext {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+        /* --------------------------------------------- */
+
+        h1 {
+            color: #ff4b2b;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        p.normal-text {
+            color: #333;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #ff4b2b;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: #e43e22;
+        }
+
+        /* Tasto No con forte contrasto (Viola prugna scuro) */
+        .btnNo {
+            background-color: #5b2c6f; 
+            color: white;
+            box-shadow: 0 4px 15px rgba(91, 44, 111, 0.4);
+            z-index: 9999;
+            transition: left 0.6s ease-in-out, top 0.6s ease-in-out;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- STILI PER LA CASCATA DI IMMAGINI --- */
+        .falling-item {
+            position: fixed;
+            top: -150px; 
+            z-index: 9998; 
+            pointer-events: none; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            animation: fall linear forwards;
+            object-fit: cover; 
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(-15deg); opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(120vh) rotate(45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        
+        <!-- Schermata 1: Intro -->
+        <div id="screen1" class="screen">
+            <h2 class="title-amore">amore,</h2>
+            <p class="intro-text">oggi è una giornata speciale per te...</p>
+            <p class="intro-subtext">ma prima di dirti qualsiasi cosa, ho bisogno di accertarmi che fino ad ora ho fatto un <strong>buon lavoro come fidanzatino :)</strong></p>
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.location.hash = '#screen2'">continua</button>
+            </div>
+        </div>
+
+        <!-- ================= COPPIA 1 ================= -->
+        <div id="screen2" class="screen">
+            <h1>ti sei sempre sentita amata?❤️</h1>
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.location.hash = '#screen3'">certo</button>
+                <button class="btnNo" onclick="teleportButton(event, this)">no...</button>
+            </div>
+        </div>
+
+        <div id="screen3" class="screen">
+            <h1>immaginavo❤️</h1>
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.location.hash = '#screen4'">continua</button>
+            </div>
+        </div>
+        <!-- ============================================ -->
+
+        <!-- ================= COPPIA 2 ================= -->
+        <div id="screen4" class="screen">
+            <h1>ti ho mai trascurata?❤️</h1>
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.location.hash = '#screen5'">no!</button>
+                <button class="btnNo" onclick="teleportButton(event, this)">sempre...</button>
+            </div>
+        </div>
+
+        <div id="screen5" class="screen">
+            <h1>ma sei bravissima, tutto giusto vedo❤️</h1>
+            <p class="normal-text">ultima domandina...</p>
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.location.hash = '#screen6'">continua</button>
+            </div>
+        </div>
+        <!-- ============================================ -->
+
+        <!-- ================= COPPIA 3 ================= -->
+        <div id="screen6" class="screen">
+            <h1>ti piaccio ancora?❤️</h1>
+            <div class="buttons">
+                <!-- Cliccando "ovvio", parte la cascata massiccia prima di cambiare pagina -->
+                <button class="btn-primary" onclick="triggerCoverCascade(event)">ovvio</button>
+                <button class="btnNo" onclick="teleportButton(event, this)">no (gay)</button>
+            </div>
+        </div>
+
+        <div id="screen7" class="screen">
+            <h1>PERFETTOOOOO 🎉</h1>
+            <p class="normal-text">Esame superato a pieni voti! Adesso qui puoi scrivere la sorpresa finale o mettere il regalo vero e proprio...</p>
+        </div>
+        <!-- ============================================ -->
+
+    </div>
+
+    <script>
+        /* =========================================================
+           LE IMMAGINI DELLA TUA CASCATA (CUORI E FOTO)
+           ========================================================= */
+        const immaginiCascata = [
+            'https://cdn-icons-png.flaticon.com/512/833/833472.png',
+            'foto1.jpg',
+            'foto2.jpg',
+            'foto3.png' 
+        ];
+
+
+        /* === NUOVA LOGICA: CASCATA A COPERTURA TOTALE === */
+        function triggerCoverCascade(event) {
+            event.preventDefault(); // Blocca il cambio pagina immediato
+
+            const totalItems = 250; // Quantità enorme per coprire tutto lo schermo
+            
+            for (let i = 0; i < totalItems; i++) {
+                let img = document.createElement('img');
+                let randomImg = immaginiCascata[Math.floor(Math.random() * immaginiCascata.length)];
+                img.src = randomImg;
+                img.className = 'falling-item';
+                
+                // Immagini un po' più grandi per riempire bene lo spazio
+                let size = Math.floor(Math.random() * 50) + 50; 
+                img.style.width = size + 'px';
+                img.style.height = size + 'px'; 
+                img.style.left = Math.random() * 100 + 'vw';
+                
+                // Caduta rapida e fitta
+                let fallDuration = Math.random() * 1.2 + 1.0; 
+                img.style.animationDuration = fallDuration + 's';
+                
+                // Ritardi minimi per far partire la valanga in blocco
+                let delay = Math.random() * 0.6; 
+                img.style.animationDelay = delay + 's';
+                
+                document.body.appendChild(img);
+                
+                // Rimuove l'elemento dopo la caduta
+                setTimeout(() => {
+                    img.remove();
+                }, (fallDuration + delay) * 1000);
+            }
+            
+            // Dopo 1.1 secondi (quando lo schermo è completamente pieno), la pagina sotto cambia
+            setTimeout(() => {
+                window.location.hash = '#screen7';
+            }, 1100);
+        }
+
+
+        /* === GESTIONE FRECCE BROWSER E CAMBIO PAGINA === */
+        
+        function checkURL() {
+            let currentHash = window.location.hash || '#screen1';
+
+            for(let i = 1; i <= 7; i++) {
+                let screen = document.getElementById('screen' + i);
+                if(screen) screen.style.display = 'none';
+            }
+
+            let activeScreenId = currentHash.replace('#', '');
+            let activeScreen = document.getElementById(activeScreenId);
+            
+            if(activeScreen) {
+                activeScreen.style.display = 'block';
+            } else {
+                document.getElementById('screen1').style.display = 'block';
+            }
+
+            resetButtons(); 
+        }
+
+        window.addEventListener('hashchange', checkURL);
+        checkURL();
+
+
+        /* === LOGICA TASTI CHE SCIVOLANO === */
+
+        function teleportButton(event, btn) {
+            event.preventDefault(); 
+            
+            if (btn.style.position !== 'fixed') {
+                const rect = btn.getBoundingClientRect();
+                btn.style.left = rect.left + 'px';
+                btn.style.top = rect.top + 'px';
+                btn.style.position = 'fixed';
+                btn.style.margin = '0';
+                btn.offsetHeight; 
+            }
+            
+            const margin = 20; 
+            
+            const maxX = window.innerWidth - btn.offsetWidth - (2 * margin);
+            const maxY = window.innerHeight - btn.offsetHeight - (2 * margin);
+            
+            const randomX = Math.max(margin, Math.floor(Math.random() * maxX) + margin);
+            const randomY = Math.max(margin, Math.floor(Math.random() * maxY) + margin);
+            
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        function resetButtons() {
+            const allNoBtns = document.querySelectorAll('.btnNo');
+            allNoBtns.forEach(btn => {
+                btn.style.transition = 'none';
+                btn.style.position = 'relative';
+                btn.style.left = 'auto';
+                btn.style.top = 'auto';
+                btn.style.margin = '0';
+                
+                setTimeout(() => {
+                    btn.style.transition = 'left 0.6s ease-in-out, top 0.6s ease-in-out';
+                }, 50);
+            });
+        }
+    </script>
+</body>
+</html>
