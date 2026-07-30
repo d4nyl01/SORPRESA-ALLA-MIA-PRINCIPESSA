@@ -64,6 +64,26 @@
         }
         /* --------------------------------------------- */
  
+        /* --- STILE PER LA SCHERMATA FINALE (screen7) ---
+           Stessa "gerarchia" tipografica della prima pagina (una riga forte
+           + una più leggera sotto), ma con la frase principale nel colore
+           acceso del brand invece del grigio piatto di prima: risulta più
+           "calda" e festosa, coerente con SORPRESAAAAA qui sopra. */
+        .reveal-text {
+            color: #ff4b2b;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+ 
+        .reveal-subtext {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        /* --------------------------------------------- */
+ 
         h1 {
             color: #ff4b2b;
             font-size: 1.8rem;
@@ -148,6 +168,16 @@
             85% { opacity: 1; }
             100% { transform: translateY(120vh) rotate(45deg); opacity: 0; }
         }
+ 
+        /* Il cuore (cuore.png) ha lo sfondo trasparente: l'ombra e gli angoli
+           arrotondati di ".falling-item" sopra, applicati al rettangolo
+           "invisibile" che contiene il PNG, si vedevano come un antiestetico
+           quadrato dietro al cuore. Questa classe li annulla SOLO per lui;
+           le altre 3 foto (piene, senza trasparenza) restano invariate. */
+        .falling-item--cuore {
+            box-shadow: none;
+            border-radius: 0;
+        }
     </style>
 </head>
 <body>
@@ -210,8 +240,9 @@
         </div>
  
         <div id="screen7" class="screen">
-            <h1>PERFETTOOOOOO🎉</h1>
-            <p class="normal-text">adesso leggiti il mio meraviglioso nonché mastodontico poema, in attesa del bel regalino che arriverà (un giorno)</p>
+            <h1>SORPRESAAAAA 🎉</h1>
+            <p class="reveal-text">Esame superato a pieni voti!</p>
+            <p class="reveal-subtext">Adesso qui puoi scrivere la sorpresa finale o mettere il regalo vero e proprio...</p>
         </div>
         <!-- ============================================ -->
  
@@ -258,6 +289,14 @@
                 let randomImg = immaginiCascata[Math.floor(Math.random() * immaginiCascata.length)];
                 img.src = randomImg;
                 img.className = 'falling-item';
+ 
+                // Se è il cuore trasparente, aggiungiamo la classe che
+                // toglie ombra/angoli arrotondati (vedi commento nel CSS
+                // su ".falling-item--cuore"). Le altre 3 foto non vengono
+                // toccate e mantengono l'effetto "polaroid" con l'ombra.
+                if (randomImg === 'cuore.png') {
+                    img.classList.add('falling-item--cuore');
+                }
                 
                 // Immagini un po' più grandi per riempire bene lo spazio
                 let size = Math.floor(Math.random() * 50) + 50; 
